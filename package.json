@@ -1,0 +1,21 @@
+{
+  "name": "flex-event-store",
+  "version": "1.0.0",
+  "description": "An event-based global state management tool for vue, react, mini-program, ect.",
+  "main": "index.js",
+  "keywords": [
+    "state management",
+    "mini-program",
+    "vue",
+    "react"
+  ],
+  "author": "Shuanglin Deng <shuanglindev@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "test-bus": "node ./Test/event-bus-test.js",
+    "test-store": "node ./Test/event-store-test.js"
+  },
+  "devDependencies": {
+    "axios": "^0.24.0"
+  }
+}
