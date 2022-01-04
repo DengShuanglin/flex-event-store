@@ -12,7 +12,11 @@
   "author": "Shuanglin Deng <shuanglindev@gmail.com>",
   "license": "MIT",
   "publishConfig": {
-    "DengShuanglin": "https://npm.pkg.github.com"
+    "registry": "https://npm.pkg.github.com/DengShuanglin"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:DengShuanglin/flex-event-store.git"
   },
   "scripts": {
     "test-bus": "node ./Test/event-bus-test.js",
