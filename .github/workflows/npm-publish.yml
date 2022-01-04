@@ -8,31 +8,18 @@ on:
     branches: [main]
 
 jobs:
-  build:
+  publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
           node-version: 16
+      - run: npm install
       - run: npm ci
       - run: npm run test-bus
       - run: npm run test-store
-
-  publish-npm:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      
-      - uses: actions/setup-node@v2
-        with:
-          node-version: 16
-          registry-url: https://registry.npmjs.org/
-          
-      - run: npm ci
-
       - uses: JS-DevTools/npm-publish@v1
-#         env:
-#           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          token: ${{ secrets.NPM_AUTH_TOKEN }}
+
