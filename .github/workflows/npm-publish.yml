@@ -16,8 +16,7 @@ jobs:
         with:
           node-version: 16
       - run: npm ci
-      - run: npm test-bus
-      - run: npm test-store
+      - run: npm test
 
   publish-npm:
     needs: build
