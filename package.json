@@ -12,12 +12,11 @@
   "author": "Shuanglin Deng <shuanglindev@gmail.com>",
   "license": "MIT",
   "publishConfig": {
-    "name": "@DengShuanglin/flex-event-store",
     "registry": "https://npm.pkg.github.com/DengShuanglin"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/DengShuanglin/flex-event-store.git"
+    "url": "git@github.com:DengShuanglin/flex-event-store.git"
   },
   "bugs": {
     "url": "https://github.com/DengShuanglin/flex-event-store/issues"
