@@ -14,26 +14,24 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
-          node-version: 12
-      - run: npm install
+          node-version: 14
       - run: npm ci
       - run: npm run test-bus
       - run: npm run test-store
 
-  # publish:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - uses: actions/setup-node@v2
-  #       with:
-  #         node-version: 12
-  #     - run: npm install
-  #     - run: npm ci
-  #     - run: npm run test-bus
-  #     - run: npm run test-store
-  #     - uses: JS-DevTools/npm-publish@v1
-  #       with:
-  #         token: ${{ secrets.NPM_TOKEN }}
+  publish-npm:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+          registry-url: https://registry.npmjs.org/
+      - uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
+             
   publish-gpr:
     needs: build
     runs-on: ubuntu-latest
@@ -44,9 +42,9 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
-          node-version: 12
+          node-version: 14
           registry-url: https://npm.pkg.github.com/
       - run: npm ci
       - run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
