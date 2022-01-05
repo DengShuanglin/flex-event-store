@@ -18,6 +18,5 @@
   "scripts": {
     "test-bus": "node ./Test/event-bus-test.js",
     "test-store": "node ./Test/event-store-test.js"
-  },
-  "devDependencies": {}
+  }
 }
