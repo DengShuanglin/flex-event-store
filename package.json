@@ -1,6 +1,6 @@
 {
   "name": "flex-event-store",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "An event-based global state management tool for vue, react, mini-program, ect.",
   "main": "/src/index.js",
   "keywords": [
