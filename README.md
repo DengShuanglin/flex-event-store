@@ -90,15 +90,16 @@ const eventStore = new FlexEventStore({
     recommends: [],
   },
   actions: {
-    getHomeMultiData(ctx) {
-      console.log(ctx);
-      axios.get("http://123.207.32.32:8000/home/multidata").then((res) => {
-        const banner = res.data.data.banner;
-        const recommend = res.data.data.recommend;
-        // 赋值
-        ctx.banners = banner;
-        ctx.recommends = recommend;
-      });
+    getData(ctx) {
+      console.log("ctx", ctx);
+      // test code
+      // axios.get("url").then((res) => {
+      //   const banner = res.data.banner;
+      //   const recommend = res.data.recommend;
+      //
+      //   ctx.banners = banner;
+      //   ctx.recommends = recommend;
+      // });
     },
   },
 });
@@ -126,7 +127,7 @@ setTimeout(() => {
   eventStore.setState("friends", ["kobe", "james"]);
 }, 1000);
 
-eventStore.dispatch("getHomeMultiData");
+eventStore.dispatch("getData");
 ```
 
 

@@ -19,7 +19,5 @@
     "test-bus": "node ./Test/event-bus-test.js",
     "test-store": "node ./Test/event-store-test.js"
   },
-  "devDependencies": {
-    "axios": "^0.24.0"
-  }
+  "devDependencies": {}
 }
