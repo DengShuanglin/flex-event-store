@@ -69,6 +69,10 @@ class FlexEventStore {
   }
 
   offState(stateKey, stateCallback) {
+    const keys = Object.keys(this.state);
+    if (keys.indexOf(stateKey) === -1) {
+      throw new Error("the state does not contain your key");
+    }
     this.event.off(stateKey, stateCallback);
   }
 
