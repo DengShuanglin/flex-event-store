@@ -18,6 +18,7 @@ class FlexEventStore {
     this.state = options.state;
     this._observe(options.state);
     this.event = new EventBus();
+    this.multiEvent = new EventBus();
   }
 
   _observe(state) {
@@ -32,6 +33,7 @@ class FlexEventStore {
           if (_value === newValue) return;
           _value = newValue;
           _this.event.emit(key, _value);
+          _this.multiEvent.emit(key, { [key]: _value });
         },
       });
     });
@@ -59,7 +61,7 @@ class FlexEventStore {
       if (keys.indexOf(theKey) === -1) {
         throw new Error("the state does not contain your key");
       }
-      this.eventV2.on(theKey, stateCallback);
+      this.multiEvent.on(theKey, stateCallback);
       value[theKey] = this.state[theKey];
     }
 
@@ -75,7 +77,7 @@ class FlexEventStore {
       if (keys.indexOf(stateKey) === -1) {
         throw new Error("the state does not contain your key");
       }
-      this.eventV2.off(theKey, stateCallback);
+      this.multiEvent.off(theKey, stateCallback);
     });
   }
 
