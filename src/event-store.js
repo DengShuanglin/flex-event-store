@@ -42,7 +42,7 @@ class FlexEventStore {
   onState(stateKey, stateCallback) {
     const keys = Object.keys(this.state);
     if (keys.indexOf(stateKey) === -1) {
-      throw new Error("then state does not contain your key");
+      throw new Error("the state does not contain your key: " + stateKey);
     }
 
     this.event.on(stateKey, stateCallback);
@@ -59,7 +59,7 @@ class FlexEventStore {
     const value = {};
     for (const theKey of stateKeys) {
       if (keys.indexOf(theKey) === -1) {
-        throw new Error("the state does not contain your key");
+        throw new Error("the state does not contain your key: " + theKey);
       }
       this.multiEvent.on(theKey, stateCallback);
       value[theKey] = this.state[theKey];
@@ -71,15 +71,15 @@ class FlexEventStore {
   offState(stateKey, stateCallback) {
     const keys = Object.keys(this.state);
     if (keys.indexOf(stateKey) === -1) {
-      throw new Error("the state does not contain your key");
+      throw new Error("the state does not contain your key:" + stateKey);
     }
     this.event.off(stateKey, stateCallback);
   }
 
   offStates(stateKeys, stateCallback) {
     stateKeys.forEach((theKey) => {
-      if (keys.indexOf(stateKey) === -1) {
-        throw new Error("the state does not contain your key");
+      if (theKey.indexOf(stateKeys) === -1) {
+        throw new Error("the state does not contain your key:" + theKey);
       }
       this.multiEvent.off(theKey, stateCallback);
     });
