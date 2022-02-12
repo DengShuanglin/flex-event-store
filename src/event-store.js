@@ -78,7 +78,7 @@ class FlexEventStore {
 
   offStates(stateKeys, stateCallback) {
     stateKeys.forEach((theKey) => {
-      if (theKey.indexOf(stateKeys) === -1) {
+      if (stateKeys.indexOf(theKey) === -1) {
         throw new Error("the state does not contain your key:" + theKey);
       }
       this.multiEvent.off(theKey, stateCallback);
